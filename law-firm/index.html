@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&amp;family=Public+Sans:wght@400;500;600;700&amp;display=swap">
-<link rel="preload" as="image" href="img/hero.webp" type="image/webp">
+<link rel="preload" as="image" href="img/hero.webp" imagesrcset="img/hero-m.webp 1000w, img/hero.webp 2000w" imagesizes="(max-width: 900px) 100vw, 58vw" type="image/webp">
 <script>
 (function () {
   var d = document.documentElement;
@@ -143,6 +143,25 @@ html.rv-armed .rv:not(.is-in){opacity:0;transform:translateY(16px)}
   .brand-sub{font-size:9px;letter-spacing:.3em;margin-top:6px}
   .nav-phone{display:none}
 }
+.util .short{display:none}
+@media (max-width:374px){
+  .util .long-txt{display:none}
+  .util .short{display:inline}
+  .util-row{gap:10px}
+  .util p{gap:10px}
+  .nav-row{gap:10px}
+  .brand{gap:10px}
+  .brand-mark{width:32px;height:32px}
+  .brand-word{font-size:19px}
+  .brand-sub{font-size:8.5px;letter-spacing:.24em}
+  .menu-btn{padding:0 2px 0 8px}
+}
+@media (max-width:339px){
+  .menu-btn{min-width:44px;justify-content:flex-end}
+  .mnav-close{min-width:44px;justify-content:flex-end}
+  .mnav-close .close-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+  .menu-btn .menu-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+}
 
 /* Mobile menu (outside the header) */
 .mnav{position:fixed;inset:0;z-index:80;background:var(--ink);color:var(--white);display:flex;flex-direction:column;padding:22px var(--gut) calc(28px + env(safe-area-inset-bottom));visibility:hidden;opacity:0;transition:opacity .3s ease,visibility 0s linear .3s;overflow-y:auto}
@@ -157,17 +176,21 @@ html.rv-armed .rv:not(.is-in){opacity:0;transform:translateY(16px)}
 .mnav-foot p{margin:4px 0 0;color:var(--mist);font-size:14px;text-align:center}
 
 /* Hero */
-.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--navy);color:var(--white);min-height:max(700px,min(100svh,980px));display:flex;flex-direction:column}
-.hero-media{position:absolute;top:0;right:0;bottom:0;width:70%;z-index:-1;overflow:hidden}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:72% 30%;transform-origin:62% 38%}
-.hero-media::after{content:"";position:absolute;inset:0;background:
-  linear-gradient(90deg,var(--navy) 0%,rgba(17,27,46,.9) 15%,rgba(17,27,46,.48) 38%,rgba(17,27,46,.04) 66%,rgba(17,27,46,.18) 100%),
-  linear-gradient(180deg,rgba(14,17,22,.62) 0%,rgba(14,17,22,0) 24%,rgba(14,17,22,0) 60%,rgba(14,17,22,.86) 100%)}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:var(--navy);color:var(--white);min-height:max(720px,min(100svh,980px));display:flex;flex-direction:column}
+.hero-media{position:absolute;top:0;right:0;bottom:0;width:58%;z-index:-1;overflow:hidden;background:var(--ink)}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 24%;transform-origin:50% 30%}
+.hero-media::after{content:"";position:absolute;inset:0;pointer-events:none;background:
+  linear-gradient(90deg,var(--navy) 0%,rgba(17,27,46,.55) 5%,rgba(17,27,46,0) 14%),
+  linear-gradient(180deg,rgba(14,17,22,.6) 0%,rgba(14,17,22,0) 19%,rgba(14,17,22,0) 80%,rgba(14,17,22,.82) 100%)}
 .hero-inner{flex:1;display:flex;align-items:center;padding-top:142px;padding-bottom:36px}
-.hero-copy{max-width:640px}
-.hero-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 26px;font:600 12.5px/1.3 var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--brass-lt)}
+.hero-copy{max-width:min(480px,calc(42vw - max(0px,(100vw - 1336px) / 2) - var(--gut) - 32px))}
+@media (min-width:1500px){
+  .hero-media{width:calc(100% - (100vw - 1336px) / 2 - var(--gut) - 520px)}
+  .hero-copy{max-width:480px}
+}
+.hero-kicker{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin:0 0 26px;text-wrap:balance;font:600 12.5px/1.3 var(--f-sans);letter-spacing:.18em;text-transform:uppercase;color:var(--brass-lt)}
 .hero-kicker::before{content:"";width:34px;height:1px;background:currentColor}
-.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(44px,5.6vw,82px);line-height:1;letter-spacing:-.012em}
+.hero h1{font-family:var(--f-display);font-weight:400;font-size:clamp(44px,4.9vw,72px);line-height:1;letter-spacing:-.012em}
 .hero h1 .l2{display:block}
 .hero h1 em{display:block;margin-top:.08em;font-family:var(--f-serif);font-style:italic;font-size:.86em;color:var(--brass-lt);letter-spacing:-.01em}
 .hero-lede{margin:26px 0 32px;max-width:590px;font-size:clamp(17px,1.3vw,19px);line-height:1.62;color:rgba(255,255,255,.86);text-wrap:pretty}
@@ -185,20 +208,20 @@ html.rv-armed .rv:not(.is-in){opacity:0;transform:translateY(16px)}
 @keyframes heroZoom{from{transform:scale(1.06)}to{transform:scale(1)}}
 @keyframes heroUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1;transform:none}
-@media (max-width:1180px){
-  .hero-media img{object-position:40% 30%}
-  .hero-copy{max-width:560px}
-}
 @media (max-width:900px){
-  .hero{min-height:0}
-  .hero-media{width:100%;bottom:auto;height:min(76svh,660px)}
+  .hero{min-height:0;padding-top:124px}
+  .hero-media{position:relative;z-index:0;width:100%;height:clamp(300px,62svh,700px)}
   .hero-media img{object-position:50% 30%}
-  .hero-media::after{background:linear-gradient(180deg,rgba(14,17,22,.6) 0%,rgba(17,27,46,.05) 26%,rgba(17,27,46,.3) 48%,rgba(17,27,46,.88) 74%,var(--navy) 100%)}
-  .hero-inner{align-items:flex-end;padding-top:calc(min(76svh,660px) - 230px);padding-bottom:40px}
+  .hero-media::after{background:linear-gradient(180deg,rgba(17,27,46,.35) 0%,rgba(17,27,46,0) 12%,rgba(17,27,46,0) 70%,rgba(17,27,46,.7) 88%,var(--navy) 100%)}
+  .hero-inner{position:relative;z-index:1;margin-top:-34px;padding-top:0;padding-bottom:40px}
+  .hero-copy{max-width:640px}
 }
 @media (max-width:640px){
+  .hero{padding-top:104px}
+  .hero-media{height:clamp(300px,52svh,520px)}
+  .hero-media img{object-position:50% 22%}
   .hero h1{font-size:clamp(40px,11vw,46px);line-height:1.02}
-  .hero-kicker{font-size:11.5px;letter-spacing:.16em;margin-bottom:22px}
+  .hero-kicker{font-size:11.5px;letter-spacing:.16em;margin-bottom:18px}
   .hero-lede{margin:22px 0 28px}
   .hero-ctas .btn{width:100%}
   .hero-line p{font-size:14px;padding:20px 0 24px}
@@ -207,7 +230,6 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 /* Results ledger */
 .results{background:var(--ink);padding:var(--sec) 0}
 .results-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(48px,7vw,104px);align-items:start}
-.results-lead{position:sticky;top:120px}
 .results-lead .lede{margin-top:24px}
 .total{margin:40px 0 0;padding:30px 0 0;border-top:1px solid var(--rule-d);font:400 clamp(26px,2.3vw,32px)/1.3 var(--f-serif);color:var(--white);text-wrap:balance}
 .total b{font-weight:400;color:var(--brass-lt)}
@@ -222,15 +244,35 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .ledger-body .desc{margin:0;font-size:15.5px;line-height:1.62;color:var(--mist)}
 .lead{margin:12px 0 0;font-size:13.5px;color:rgba(255,255,255,.6)}
 .lead b{font-weight:600;color:rgba(255,255,255,.86)}
+.results-lead{position:sticky;top:120px}
+.ledger-col{display:grid;grid-template-columns:1fr 1fr;column-gap:20px}
+.ledger-col .ledger{grid-column:1/-1}
+.ledger-photo{margin:0;padding:36px 0 40px}
+.ledger-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:50% 45%}
 @media (max-width:980px){.results-grid{grid-template-columns:1fr}.results-lead{position:static}}
-@media (max-width:640px){.ledger-row{grid-template-columns:1fr;gap:16px;padding:30px 0}.fig{font-size:46px}}
+@media (max-width:640px){
+  .ledger-row{grid-template-columns:1fr;gap:12px;padding:26px 0}.fig{font-size:44px}
+  .results-grid{display:flex;flex-direction:column;gap:0}
+  .results-lead,.ledger-col{display:contents}
+  .results-lead>.eyebrow{order:1}.results-lead>.h2{order:2}.results-lead>.lede{order:3}
+  .lp-lane{order:4;padding:30px 0 0}
+  .results-lead>.total{order:5}.results-lead>.note-box{order:6}
+  .ledger-col>.ledger:first-of-type{order:7;margin-top:44px}
+  .lp-prep{order:8}
+  .ledger-col>.ledger:last-of-type{order:9}
+  .ledger-photo{padding:30px 0 32px}
+  .ledger-photo img{aspect-ratio:3/2}
+}
 
 /* Practice areas: two-column ruled list */
 .practice{background:var(--white);padding:var(--sec) 0}
 .split-head{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,96px);align-items:end;margin-bottom:clamp(44px,5vw,64px)}
 .split-head .lede{margin:0}
 .pa-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(40px,6vw,88px);border-bottom:1px solid var(--rule-l)}
-.pa-item a{display:block;height:100%;padding:28px 0 30px;border-top:1px solid var(--rule-l);text-decoration:none;color:inherit}
+.pa-item a{display:grid;grid-template-columns:clamp(150px,14vw,184px) minmax(0,1fr);gap:clamp(20px,2vw,28px);align-items:start;height:100%;padding:28px 0 30px;border-top:1px solid var(--rule-l);text-decoration:none;color:inherit}
+.pa-img{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--cool-2);transition:filter .4s ease}
+.pa-item a:hover .pa-img{filter:brightness(1.06)}
+.pa-text{display:block;min-width:0}
 .pa-title{display:flex;align-items:baseline;justify-content:space-between;gap:16px;font:400 clamp(26px,2.3vw,31px)/1.15 var(--f-display);transition:color .25s ease}
 .pa-title .ico{width:20px;height:20px;color:var(--brass-dk);opacity:0;transform:translateX(-6px);transition:opacity .25s ease,transform .25s ease}
 .pa-desc{display:block;margin-top:10px;font-size:16.5px;line-height:1.6;color:var(--slate);max-width:52ch}
@@ -242,7 +284,8 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .btn-ghost{border-color:rgba(17,27,46,.3);color:var(--text)}
 .btn-ghost:hover{border-color:var(--brass-dk);color:var(--brass-dk)}
 @media (max-width:980px){.split-head{grid-template-columns:1fr;gap:20px}}
-@media (max-width:700px){.pa-grid{grid-template-columns:1fr}.pa-item a{padding:22px 0 24px}.pa-desc{font-size:15.5px}}
+@media (max-width:700px){.pa-grid{grid-template-columns:1fr}.pa-item a{grid-template-columns:104px minmax(0,1fr);gap:18px;padding:22px 0 24px}.pa-img{aspect-ratio:1/1}.pa-desc{font-size:15.5px}}
+@media (max-width:374px){.pa-item a{grid-template-columns:84px minmax(0,1fr);gap:14px}.pa-title{font-size:24px}}
 
 /* After a wreck: photo split */
 .wreck{position:relative;background:var(--navy);overflow:hidden}
@@ -280,6 +323,18 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .sign .sig{display:block;font:400 italic 38px/1 var(--f-serif);color:var(--text)}
 .sign span{display:block;margin-top:10px;font-size:14.5px;color:var(--slate)}
 @media (max-width:980px){.letter-grid{grid-template-columns:1fr}.letter-media{max-width:620px}}
+@media (max-width:640px){
+  .letter-grid{display:flex;flex-direction:column;gap:0}
+  .letter-media,.letter-body{display:contents}
+  .letter-media .main{order:1;width:100%;aspect-ratio:1/1;object-position:50% 30%;margin-bottom:44px}
+  .letter-body .h2{order:2}
+  .letter-body>p:nth-of-type(1){order:3}
+  .letter-body>p:nth-of-type(2){order:4}
+  .letter-inset{order:5;position:static;width:100%;border:0;margin:10px 0 32px}
+  .letter-body>p:nth-of-type(3){order:6}
+  .letter-body>p:nth-of-type(4){order:7}
+  .sign{order:8}
+}
 
 /* Process table */
 .process{background:var(--navy);padding:var(--sec) 0}
@@ -291,8 +346,12 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .stages th{width:20%;padding-right:28px;font:600 12px/1.9 var(--f-sans);letter-spacing:.15em;text-transform:uppercase;color:var(--brass-lt)}
 .stages .st{width:28%;padding-right:28px;font:400 25px/1.25 var(--f-serif);color:var(--white)}
 .stages td:last-child{font-size:16.5px;line-height:1.62;color:var(--mist)}
-.process-foot{margin-top:34px;display:flex;flex-wrap:wrap;gap:18px 40px;align-items:center;justify-content:space-between}
-.process-foot p{margin:0;max-width:62ch;color:rgba(255,255,255,.8);font-size:16.5px}
+.process-foot{margin-top:clamp(40px,4vw,56px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(28px,5vw,72px);align-items:center}
+.pf-photo{margin:0}
+.pf-photo img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.pf-text{display:grid;gap:26px;justify-items:start}
+.process-foot p{margin:0;max-width:44ch;font:400 clamp(20px,1.8vw,24px)/1.45 var(--f-serif);color:rgba(255,255,255,.88)}
+@media (max-width:820px){.process-foot{grid-template-columns:1fr;gap:28px}.process-foot p{font-size:19px}}
 @media (max-width:820px){
   .process-photo img{aspect-ratio:16/10}
   .stages,.stages tbody,.stages tr,.stages th,.stages td{display:block;width:auto}
@@ -318,6 +377,27 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .creds dd{margin:0;font-size:14.5px;line-height:1.55;color:var(--text)}
 @media (max-width:980px){.attys{grid-template-columns:1fr 1fr}.atty:nth-child(2){margin-top:0}}
 @media (max-width:640px){.attys{grid-template-columns:1fr;gap:64px}.atty-photo img{aspect-ratio:1/1;object-position:50% 12%}}
+
+/* Around the office */
+.office{background:var(--white);padding:var(--sec) 0}
+.mosaic{display:grid;gap:12px}
+.m-row{display:grid;gap:12px;height:clamp(240px,24vw,340px)}
+.m-r1{grid-template-columns:minmax(0,5fr) minmax(0,3fr) minmax(0,4fr)}
+.m-r2{grid-template-columns:minmax(0,4fr) minmax(0,3fr) minmax(0,5fr)}
+.m{position:relative;margin:0;overflow:hidden;background:var(--cool-2)}
+.m img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.m:hover img{transform:scale(1.03)}
+.m .m-drafting{object-position:38% 50%}
+.m figcaption{position:absolute;left:0;right:0;bottom:0;padding:44px 18px 14px;font-size:13.5px;line-height:1.4;color:rgba(255,255,255,.92);background:linear-gradient(180deg,rgba(14,17,22,0) 0%,rgba(14,17,22,.74) 100%)}
+@media (max-width:700px){
+  .m-row,.m-r1,.m-r2{height:auto;grid-template-columns:1fr 1fr;gap:10px}
+  .mosaic{gap:10px}
+  .m{aspect-ratio:4/5}
+  .m-wide{grid-column:1/-1;aspect-ratio:3/2}
+  .m-r2 .m-wide{order:-1}
+  .m .m-drafting{object-position:50% 50%}
+  .m figcaption{padding:36px 12px 10px;font-size:12.5px}
+}
 
 /* Testimonials */
 .voices{background:var(--ink);padding:var(--sec) 0}
@@ -353,6 +433,9 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .fee-table td{text-align:right;font:400 clamp(24px,2.2vw,30px)/1.2 var(--f-display);color:var(--text);white-space:nowrap}
 .fee-table td small{display:block;margin-top:4px;font:400 14px/1.4 var(--f-sans);color:var(--slate);white-space:normal}
 .fee-note{margin-top:26px;font-size:15.5px;line-height:1.65;color:var(--slate);max-width:64ch}
+.fees-side{display:grid;gap:20px}
+.fees-photo{margin:0}
+.fees-photo img{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:50% 72%}
 .example{background:var(--cool);padding:clamp(26px,3vw,36px)}
 .example h3{font:400 24px/1.25 var(--f-serif);margin:0 0 6px}
 .example .fine{margin:0 0 18px}
@@ -363,7 +446,7 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .example .net{border-bottom:0;padding-top:16px;align-items:baseline}
 .example .net dt{color:var(--text);font-weight:600}
 .example .net dd{font:400 28px/1 var(--f-display);color:var(--brass-dk)}
-@media (max-width:980px){.fees-grid{grid-template-columns:1fr}}
+@media (max-width:980px){.fees-grid{grid-template-columns:1fr}.fees-side{display:contents}.fees-photo{order:-1}.fees-photo img{aspect-ratio:16/10}.example{max-width:620px}}
 @media (max-width:640px){.fee-table th{font-size:15.5px}.fee-table td{font-size:22px}}
 
 /* Case review form */
@@ -379,6 +462,8 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .callnow .ico{width:24px;height:24px;color:var(--brass-lt)}
 .callnow p{margin:0;font-size:15px;color:var(--mist);line-height:1.5}
 .callnow a{display:block;font:400 30px/1.15 var(--f-display);color:var(--white);text-decoration:none}
+.caserev-photo{margin:40px 0 0;max-width:560px}
+.caserev-photo img{width:100%;aspect-ratio:3/2;object-fit:cover}
 .form-card{position:relative;background:var(--white);color:var(--text);padding:clamp(28px,3.4vw,46px);box-shadow:0 40px 80px -40px rgba(0,0,0,.7)}
 .form-card::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--brass)}
 .form-card h3{font:400 30px/1.15 var(--f-display);margin:0 0 6px}
@@ -434,7 +519,7 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .faq-item summary:hover{color:var(--brass-dk)}
 .faq-a{padding:0 48px 26px 0;color:var(--slate);font-size:16.5px;line-height:1.66}
 .faq-a p:last-child{margin-bottom:0}
-@media (max-width:980px){.faq-grid{grid-template-columns:1fr}.faq-side{position:static}.faq-photo{display:none}}
+@media (max-width:980px){.faq-grid{grid-template-columns:1fr}.faq-side{position:static}.faq-photo{max-width:620px}}
 @media (max-width:640px){.faq-a{padding-right:0}}
 
 /* Office visit */
@@ -451,7 +536,7 @@ html.hero-settled .ha,html.hero-settled .hero-media img{animation:none;opacity:1
 .visit-inset{position:absolute;left:-8%;bottom:0;width:58%;margin:0;border:10px solid var(--white);background:var(--white)}
 .visit-inset img{width:100%;aspect-ratio:3/2;object-fit:cover}
 .visit-inset figcaption{padding:10px 2px 0;font-size:13px;color:var(--slate)}
-@media (max-width:980px){.visit-grid{grid-template-columns:1fr}.visit-inset{left:0}}
+@media (max-width:980px){.visit-grid{grid-template-columns:1fr}.visit-inset{left:0}.visit-media{order:-1;max-width:680px}}
 @media (max-width:640px){.visit-list div{grid-template-columns:1fr;gap:2px}.visit-media{padding-bottom:30%}.visit-inset{width:70%}}
 
 /* Closing photo band */
@@ -524,7 +609,7 @@ body.menu-open .mbar{transform:translateY(110%)}
 <header class="site-header" id="siteHeader">
   <div class="util">
     <div class="wrap util-row">
-      <p>Phones answered 24 hours a day<span class="sep" aria-hidden="true"></span>Hablamos español</p>
+      <p><span>Phones answered <span class="long-txt">24 hours a day</span><span class="short">24/7</span></span><span class="sep" aria-hidden="true"></span>Hablamos español</p>
       <p class="hide-sm">Uptown Houston<span class="sep" aria-hidden="true"></span><a href="tel:+17135550119">(713) 555-0119</a><span class="sep" aria-hidden="true"></span><a href="#" lang="es">Español</a></p>
     </div>
   </div>
@@ -542,14 +627,14 @@ body.menu-open .mbar{transform:translateY(110%)}
     </nav>
     <a class="nav-phone" href="tel:+17135550119"><svg class="ico"><use href="#i-phone"/></svg><span><small>Call 24/7</small>(713) 555-0119</span></a>
     <a class="btn btn-brass" href="#review">Free case review</a>
-    <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false" id="menuOpen"><span>Menu</span><span class="bars" aria-hidden="true"><span></span><span></span></span></button>
+    <button class="menu-btn" type="button" aria-controls="mnav" aria-expanded="false" id="menuOpen"><span class="menu-label">Menu</span><span class="bars" aria-hidden="true"><span></span><span></span></span></button>
   </div>
 </header>
 
 <div class="mnav" id="mnav" role="dialog" aria-modal="true" aria-label="Site menu" aria-hidden="true">
   <div class="mnav-top">
     <span class="brand"><svg class="brand-mark" viewBox="0 0 44 44" aria-hidden="true"><rect x=".75" y=".75" width="42.5" height="42.5" fill="none" stroke="currentColor" stroke-width="1"/><rect x="4" y="4" width="36" height="36" fill="none" stroke="currentColor" stroke-width=".6" opacity=".5"/><text x="22.6" y="31.5" text-anchor="middle" font-family="Libre Caslon Text, Georgia, serif" font-style="italic" font-size="27" fill="currentColor">&amp;</text></svg><span class="brand-text"><span class="brand-word">Calder <em>&amp;</em> Thorne</span><span class="brand-sub">Injury Law · Houston</span></span></span>
-    <button class="mnav-close" type="button" id="menuClose">Close <svg class="ico"><use href="#i-close"/></svg></button>
+    <button class="mnav-close" type="button" id="menuClose"><span class="close-label">Close</span> <svg class="ico"><use href="#i-close"/></svg></button>
   </div>
   <nav class="mnav-links" aria-label="Mobile">
     <a href="#practice">Practice areas <svg class="ico"><use href="#i-arrow"/></svg></a>
@@ -571,7 +656,7 @@ body.menu-open .mbar{transform:translateY(110%)}
 <!-- Hero -->
 <section class="hero" id="top" aria-labelledby="heroTitle">
   <div class="hero-media">
-    <img src="img/hero.webp" width="2200" height="1469" alt="Founding partner Margaret Calder listening as two colleagues talk through a case in her office" fetchpriority="high">
+    <img src="img/hero.webp" srcset="img/hero-m.webp 1000w, img/hero.webp 2000w" sizes="(max-width: 900px) 100vw, 58vw" width="2000" height="2500" alt="Simone Barlow handing Elliot Thorne a case file at his desk, with the firm's law library and an American flag behind them" fetchpriority="high">
   </div>
   <div class="wrap hero-inner">
     <div class="hero-copy">
@@ -602,6 +687,7 @@ body.menu-open .mbar{transform:translateY(110%)}
         <p><span class="dagger">†</span> Past results do not guarantee a similar outcome. Every case depends on its own facts and the law that applies. Amounts are gross recoveries; attorney fees and case expenses were paid from them.</p>
       </div>
     </div>
+    <div class="ledger-col">
     <ul class="ledger">
       <li class="ledger-row rv">
         <p class="fig"><sup>$</sup><span data-count="4250000">4,250,000</span></p>
@@ -630,6 +716,16 @@ body.menu-open .mbar{transform:translateY(110%)}
           <p class="lead">Lead counsel: <b>Elliot Thorne</b></p>
         </div>
       </li>
+    </ul>
+    <figure class="ledger-photo lp-lane rv">
+      <img src="img/lane.webp" width="1200" height="900" alt="Aerial view of a freeway interchange on Interstate 10 in Houston" loading="lazy">
+      <figcaption class="cap">Interstate 10, Houston</figcaption>
+    </figure>
+    <figure class="ledger-photo lp-prep rv">
+      <img src="img/prep.webp" width="1400" height="788" alt="An attorney at his desk in the firm's library, preparing for trial" loading="lazy">
+      <figcaption class="cap">Preparing for a Harris County trial</figcaption>
+    </figure>
+    <ul class="ledger">
       <li class="ledger-row rv">
         <p class="fig"><sup>$</sup><span data-count="1180000">1,180,000</span></p>
         <div class="ledger-body">
@@ -658,6 +754,7 @@ body.menu-open .mbar{transform:translateY(110%)}
         </div>
       </li>
     </ul>
+    </div>
   </div>
 </section>
 
@@ -669,14 +766,14 @@ body.menu-open .mbar{transform:translateY(110%)}
       <p class="lede">Injury and wrongful death cases, and nothing else. No wills, no divorces, no traffic tickets. We only represent injured people and their families, never insurance companies.</p>
     </div>
     <ul class="pa-grid rv">
-      <li class="pa-item"><a href="#review" data-case="Car wreck"><span class="pa-title">Car wrecks <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Rear-end crashes on I-10 and I-45, intersection collisions, hit-and-runs and drivers with no insurance. We deal with the adjusters so you can get on with getting better.</span></a></li>
-      <li class="pa-item"><a href="#review" data-case="18-wheeler crash"><span class="pa-title">18-wheeler crashes <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Trucks hauling containers out of the Port of Houston run on federal rules for driver hours, maintenance and logbooks. We send preservation letters within days, before that data is gone.</span></a></li>
-      <li class="pa-item"><a href="#review" data-case="Motorcycle crash"><span class="pa-title">Motorcycle crashes <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Riders are often blamed first. We rebuild the crash from scene measurements, vehicle data and witnesses to show what actually happened.</span></a></li>
-      <li class="pa-item"><a href="#review" data-case="Wrongful death"><span class="pa-title">Wrongful death <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Texas law lets a spouse, children and parents recover for lost income, medical and funeral costs, and the loss of the person they loved.</span></a></li>
-      <li class="pa-item"><a href="#review" data-case="Workplace injury"><span class="pa-title">Workplace injuries <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Texas lets employers opt out of workers' compensation. If yours did, you can sue them directly. If a contractor or equipment maker caused the injury, you may have a claim against them too.</span></a></li>
-      <li class="pa-item"><a href="#review" data-case="Slip and fall"><span class="pa-title">Slip and fall <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Stores and property owners have to deal with hazards they know about. We move quickly to get camera footage before it is recorded over.</span></a></li>
-      <li class="pa-item"><a href="#review" data-case="Dog bite"><span class="pa-title">Dog bites <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Texas has no blanket dog bite statute, so these cases turn on what the owner knew and how careful they were. We find that out early.</span></a></li>
-      <li class="pa-item"><a href="#review" data-case="Pedestrian or bicycle"><span class="pa-title">Pedestrians and cyclists <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Crosswalk and bike lane crashes, including cases against rideshare drivers and delivery fleets.</span></a></li>
+      <li class="pa-item"><a href="#review" data-case="Car wreck"><img class="pa-img" src="img/pa-car.webp" width="640" height="480" alt="Brake lights blurred through a rain-streaked windshield in freeway traffic" loading="lazy"><span class="pa-text"><span class="pa-title">Car wrecks <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Rear-end crashes on I-10 and I-45, intersection collisions, hit-and-runs and drivers with no insurance. We deal with the adjusters so you can get on with getting better.</span></span></a></li>
+      <li class="pa-item"><a href="#review" data-case="18-wheeler crash"><img class="pa-img" src="img/pa-truck.webp" width="640" height="480" alt="Tractor-trailers and cars sharing a busy freeway" loading="lazy"><span class="pa-text"><span class="pa-title">18-wheeler crashes <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Trucks hauling containers out of the Port of Houston run on federal rules for driver hours, maintenance and logbooks. We send preservation letters within days, before that data is gone.</span></span></a></li>
+      <li class="pa-item"><a href="#review" data-case="Motorcycle crash"><img class="pa-img" src="img/pa-moto.webp" width="640" height="480" alt="A motorcycle on its side in a traffic lane after a crash" loading="lazy"><span class="pa-text"><span class="pa-title">Motorcycle crashes <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Riders are often blamed first. We rebuild the crash from scene measurements, vehicle data and witnesses to show what actually happened.</span></span></a></li>
+      <li class="pa-item"><a href="#review" data-case="Wrongful death"><img class="pa-img" src="img/pa-death.webp" width="640" height="480" alt="A woman at home looking at a framed family photograph" loading="lazy"><span class="pa-text"><span class="pa-title">Wrongful death <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Texas law lets a spouse, children and parents recover for lost income, medical and funeral costs, and the loss of the person they loved.</span></span></a></li>
+      <li class="pa-item"><a href="#review" data-case="Workplace injury"><img class="pa-img" src="img/pa-work.webp" width="640" height="480" alt="Two construction workers in hard hats tying rebar on a job site" loading="lazy"><span class="pa-text"><span class="pa-title">Workplace injuries <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Texas lets employers opt out of workers' compensation. If yours did, you can sue them directly. If a contractor or equipment maker caused the injury, you may have a claim against them too.</span></span></a></li>
+      <li class="pa-item"><a href="#review" data-case="Slip and fall"><img class="pa-img" src="img/pa-slip.webp" width="640" height="480" alt="A yellow wet floor sign on a polished store floor" loading="lazy"><span class="pa-text"><span class="pa-title">Slip and fall <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Stores and property owners have to deal with hazards they know about. We move quickly to get camera footage before it is recorded over.</span></span></a></li>
+      <li class="pa-item"><a href="#review" data-case="Dog bite"><img class="pa-img" src="img/pa-dog.webp" width="640" height="480" alt="A dog standing behind a chain-link fence" loading="lazy"><span class="pa-text"><span class="pa-title">Dog bites <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Texas has no blanket dog bite statute, so these cases turn on what the owner knew and how careful they were. We find that out early.</span></span></a></li>
+      <li class="pa-item"><a href="#review" data-case="Pedestrian or bicycle"><img class="pa-img" src="img/pa-bike.webp" width="640" height="480" alt="A cyclist with his bike waiting at a crosswalk" loading="lazy"><span class="pa-text"><span class="pa-title">Pedestrians and cyclists <svg class="ico"><use href="#i-arrow"/></svg></span><span class="pa-desc">Crosswalk and bike lane crashes, including cases against rideshare drivers and delivery fleets.</span></span></a></li>
     </ul>
     <div class="pa-cta rv">
       <p>Not sure your situation fits? Ask us anyway. It costs nothing to find out.</p>
@@ -754,8 +851,14 @@ body.menu-open .mbar{transform:translateY(110%)}
       </tbody>
     </table>
     <div class="process-foot rv">
-      <p>Most of our cases resolve in 9 to 18 months. Cases that go to trial take longer, and we will tell you honestly where yours is headed.</p>
-      <a class="btn btn-brass" href="#review">Free case review <svg class="ico"><use href="#i-arrow"/></svg></a>
+      <figure class="pf-photo">
+        <img src="img/mediation.webp" width="1000" height="667" alt="Margaret Calder and Simone Barlow listening across the table at a mediation" loading="lazy">
+        <figcaption class="cap">Meg and Simone at a mediation</figcaption>
+      </figure>
+      <div class="pf-text">
+        <p>Most of our cases resolve in 9 to 18 months. Cases that go to trial take longer, and we will tell you honestly where yours is headed.</p>
+        <a class="btn btn-brass" href="#review">Free case review <svg class="ico"><use href="#i-arrow"/></svg></a>
+      </div>
     </div>
   </div>
 </section>
@@ -801,6 +904,28 @@ body.menu-open .mbar{transform:translateY(110%)}
           <div><dt>Courts</dt><dd>U.S. District Court for the Southern District of Texas</dd></div>
         </dl>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- Around the office -->
+<section class="office" aria-labelledby="officeTitle">
+  <div class="wrap">
+    <div class="split-head rv">
+      <h2 class="h2" id="officeTitle">Around the office</h2>
+      <p class="lede">Fourteenth floor in Uptown. Most of the work on your case happens in these rooms.</p>
+    </div>
+    <div class="mosaic">
+      <div class="m-row m-r1">
+        <figure class="m m-wide rv"><img src="img/g-review.webp" width="1200" height="801" alt="Margaret Calder at her desk while Simone Barlow and a paralegal point out a detail on screen" loading="lazy"><figcaption>Checking a medical timeline before a demand goes out</figcaption></figure>
+        <figure class="m rv"><img src="img/g-simone.webp" width="900" height="1125" alt="Simone Barlow smiling as she talks with a client" loading="lazy" style="object-position:50% 30%"><figcaption>Simone with a client before a deposition</figcaption></figure>
+        <figure class="m rv"><img src="img/g-books.webp" width="1000" height="667" alt="Old leather-bound volumes on a shelf in the firm library" loading="lazy"><figcaption>Old volumes in the firm library</figcaption></figure>
+      </div>
+      <div class="m-row m-r2">
+        <figure class="m rv"><img src="img/g-drafting.webp" width="1200" height="801" alt="Elliot Thorne writing at his desk as a colleague pulls a file from the shelves" loading="lazy" class="m-drafting"><figcaption>Elliot drafting a demand letter</figcaption></figure>
+        <figure class="m rv"><img src="img/g-bayou.webp" width="900" height="1125" alt="Buffalo Bayou winding through green banks below a Houston tower" loading="lazy" style="object-position:50% 40%"><figcaption>Buffalo Bayou, a short drive away</figcaption></figure>
+        <figure class="m m-wide rv"><img src="img/g-dinner.webp" width="1200" height="801" alt="Meg, Elliot and two colleagues talking over dinner" loading="lazy"><figcaption>Dinner after the last day of a trial</figcaption></figure>
+      </div>
     </div>
   </div>
 </section>
@@ -860,6 +985,10 @@ body.menu-open .mbar{transform:translateY(110%)}
         </table>
         <p class="fee-note">Case expenses, such as filing fees, medical records, depositions and accident reconstruction, are advanced by the firm. When your case resolves, they are repaid from the recovery in addition to the attorney fee. If there is no recovery, you do not repay them.</p>
       </div>
+      <div class="fees-side">
+      <figure class="fees-photo rv">
+        <img src="img/sign.webp" width="900" height="1125" alt="A client signing a written fee agreement with a fountain pen" loading="lazy">
+      </figure>
       <aside class="example rv" aria-label="Example of how a settlement is divided">
         <h3>How a settlement is divided</h3>
         <p class="fine">Example for illustration only, not a past result.</p>
@@ -871,6 +1000,7 @@ body.menu-open .mbar{transform:translateY(110%)}
           <div class="net"><dt>You receive</dt><dd>$43,100</dd></div>
         </dl>
       </aside>
+      </div>
     </div>
   </div>
 </section>
@@ -894,6 +1024,10 @@ body.menu-open .mbar{transform:translateY(110%)}
         <svg class="ico"><use href="#i-phone"/></svg>
         <p>Rather talk it through now? Any hour, any day.<a href="tel:+17135550119">(713) 555-0119</a></p>
       </div>
+      <figure class="caserev-photo">
+        <img src="img/intake.webp" width="1200" height="801" alt="Elliot Thorne at his desk in the firm's office, with law books and an American flag behind him" loading="lazy">
+        <figcaption class="cap">Elliot Thorne at his desk</figcaption>
+      </figure>
     </div>
     <div class="form-card rv" id="formCard">
       <form id="caseForm" autocomplete="on">
