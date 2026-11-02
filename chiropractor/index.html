@@ -115,6 +115,7 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 }
 @media (min-width:1300px){ .hdr-phone{ display:inline; } }
 @media (max-width:640px){ .topbar-in{ font-size:13.5px; } .hide-sm{ display:none; } .hdr-in{ gap:12px; height:72px; } .logo-name{ font-size:20px; } .logo-mark{ width:32px; height:32px; font-size:20px; } }
+@media (max-width:359px){ .topbar-in{ font-size:12.5px; gap:10px; } }
 
 .mmenu{ position:fixed; inset:0; z-index:80; background:var(--char); color:#fff; display:flex; flex-direction:column; padding:18px var(--gut) 30px; visibility:hidden; opacity:0; transition:opacity .3s, visibility 0s .3s; overflow-y:auto; }
 .mmenu.is-open{ visibility:visible; opacity:1; transition:opacity .3s; }
@@ -131,8 +132,8 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 /* ---------- hero ---------- */
 .hero{ background:var(--grey); position:relative; overflow:hidden; }
 .hero-grid{ display:grid; }
-.hero-photo{ order:-1; position:relative; overflow:hidden; aspect-ratio:4/3.3; margin-inline:calc(var(--gut) * -1); }
-.hero-photo img{ width:100%; height:100%; object-fit:cover; object-position:42% 50%; }
+.hero-photo{ order:-1; position:relative; overflow:hidden; height:clamp(340px, 108vw, 470px); margin-inline:calc(var(--gut) * -1); }
+.hero-photo img{ width:100%; height:100%; object-fit:cover; object-position:74% 50%; }
 .hero-copy{ padding:34px 0 64px; }
 .hero h1{ margin-bottom:22px; }
 .hero h1 .hl{ background:linear-gradient(transparent 62%, var(--sun) 62%, var(--sun) 92%, transparent 92%); padding:0 .04em; }
@@ -145,10 +146,12 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 .hero-rating{ margin-top:16px; font-size:14.5px; color:var(--ink-3); }
 .hero-rating b{ color:var(--ink); }
 @media (min-width:960px){
-  .hero-grid{ grid-template-columns:minmax(0, 1fr) minmax(0, 1.08fr); min-height:min(calc(100svh - 124px), 820px); }
-  .hero-photo{ order:0; aspect-ratio:auto; margin:0; margin-right:calc((100vw - min(100vw, var(--wrap) + var(--gut) * 2)) / -2 - var(--gut)); border-radius:var(--r-lg) 0 0 0; }
-  .hero-copy{ padding:72px 64px 88px 0; align-self:center; }
+  .hero-grid{ grid-template-columns:minmax(0, .84fr) minmax(0, 1.16fr); min-height:min(calc(100svh - 124px), 820px); }
+  .hero-photo{ order:0; height:auto; margin:0; margin-right:calc((100vw - min(100vw, var(--wrap) + var(--gut) * 2)) / -2 - var(--gut)); border-radius:var(--r-lg) 0 0 0; }
+  .hero-photo img{ object-position:56% 50%; }
+  .hero-copy{ padding:56px 44px 64px 0; align-self:center; }
 }
+@media (min-width:960px) and (max-width:1199px){ .hero .eyebrow{ letter-spacing:.08em; } .hero-copy{ padding-right:32px; } }
 
 @keyframes heroZoom{ from{ transform:scale(1.08); } to{ transform:scale(1); } }
 @keyframes riseIn{ from{ opacity:0; transform:translateY(18px); } to{ opacity:1; transform:none; } }
@@ -168,29 +171,37 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 .facts li span:last-child{ color:var(--ink-3); text-align:right; }
 .sig{ margin-top:30px; font-size:15px; color:var(--ink-3); }
 .sig b{ display:block; color:var(--ink); font-weight:600; font-size:16px; }
-@media (min-width:960px){ .intro-grid{ grid-template-columns:1.5fr 1fr; gap:100px; align-items:start; } .facts{ margin-top:10px; } }
+.intro-text{ order:1; } .intro-photo{ order:2; } .facts{ order:3; }
+@media (min-width:960px){ .intro-grid{ grid-template-columns:1.5fr 1fr; gap:100px; align-items:start; } .facts{ margin-top:10px; } .intro-photo{ order:4; grid-column:1 / -1; } }
 
 /* ---------- conditions ---------- */
 .cond-top{ display:grid; gap:24px; margin-bottom:clamp(40px, 5vw, 64px); }
 .cond-top .lead{ max-width:30em; }
-.cond-grid{ display:grid; gap:40px; }
-.cond-photo{ border-radius:var(--r-lg); overflow:hidden; aspect-ratio:4/4.6; }
-.cond-photo img{ width:100%; height:100%; object-fit:cover; object-position:50% 45%; }
 .cap{ margin-top:12px; font-size:14px; color:var(--ink-3); }
-.cond-list{ display:grid; gap:0 48px; align-content:start; }
-.cond-item{ padding:22px 0; border-top:1px solid var(--grey-3); }
-.cond-item h3{ font:700 21px/1.2 var(--f-d); letter-spacing:-.025em; }
+.cond-list{ display:grid; gap:0 56px; align-content:start; border-bottom:1px solid var(--grey-3); }
+.cond-item{ display:grid; grid-template-columns:88px minmax(0, 1fr); gap:18px; align-items:start; padding:22px 0; border-top:1px solid var(--grey-3); }
+.cond-item img{ width:88px; height:88px; object-fit:cover; border-radius:12px; background:var(--grey-2); }
+.cond-item h3{ font:700 21px/1.2 var(--f-d); letter-spacing:-.025em; padding-top:2px; }
 .cond-item p{ font-size:16px; line-height:1.55; color:var(--ink-2); margin-top:6px; }
 .cond-note{ margin-top:28px; font-size:14.5px; color:var(--ink-3); max-width:46em; }
-@media (min-width:760px){ .cond-list{ grid-template-columns:1fr 1fr; } }
+@media (min-width:760px){
+  .cond-list{ grid-template-columns:1fr 1fr; }
+  .cond-item{ grid-template-columns:120px minmax(0, 1fr); gap:24px; padding:26px 0; }
+  .cond-item img{ width:120px; height:120px; border-radius:14px; }
+}
 @media (min-width:960px){
   .cond-top{ grid-template-columns:1fr 1fr; align-items:end; gap:80px; }
-  .cond-grid{ grid-template-columns:.8fr 1.6fr; gap:64px; }
 }
 
 .cta-row{ margin-top:36px; display:flex; flex-wrap:wrap; align-items:center; gap:14px 24px; }
 .cta-row p{ font-size:15.5px; color:var(--ink-2); max-width:24em; }
 .cta-row.on-dark p{ color:rgba(255,255,255,.72); }
+
+/* ---------- intro photo ---------- */
+.intro-photo{ margin:0; }
+@media (min-width:960px){ .intro-photo{ margin-top:-20px; } }
+.intro-photo img{ width:100%; aspect-ratio:16/9; object-fit:cover; object-position:50% 72%; border-radius:var(--r-lg); background:var(--grey-2); }
+@media (min-width:760px){ .intro-photo img{ aspect-ratio:21/8; } }
 
 /* ---------- photo band ---------- */
 .band{ position:relative; color:#fff; min-height:clamp(520px, 72vh, 760px); display:flex; align-items:flex-end; overflow:hidden; isolation:isolate; background:var(--char); }
@@ -239,6 +250,19 @@ button,input,select,textarea{ font:inherit; color:inherit; }
   .also{ grid-template-columns:280px 1fr; gap:64px; }
 }
 
+/* ---------- gallery ---------- */
+.gal-head{ display:grid; gap:16px; margin-bottom:clamp(32px, 4vw, 56px); }
+.gal{ display:grid; gap:10px; grid-template-columns:1fr 1fr; grid-template-areas:"a a" "b c" "d c" "e f"; grid-auto-rows:clamp(150px, 42vw, 260px); }
+.gal figure{ border-radius:var(--r-md); overflow:hidden; background:var(--grey-2); }
+.gal img{ width:100%; height:100%; object-fit:cover; }
+.g-a{ grid-area:a; } .g-b{ grid-area:b; } .g-c{ grid-area:c; } .g-d{ grid-area:d; } .g-e{ grid-area:e; } .g-f{ grid-area:f; }
+.g-c img{ object-position:50% 40%; }
+@media (min-width:760px){
+  .gal{ gap:16px; grid-template-columns:repeat(4, minmax(0, 1fr)); grid-template-areas:"a a b c" "a a d c" "e e f f"; grid-auto-rows:clamp(180px, 18vw, 250px); }
+  .g-e img{ object-position:50% 40%; } .g-f img{ object-position:50% 60%; }
+}
+@media (min-width:960px){ .gal-head{ grid-template-columns:1fr 1fr; align-items:end; gap:80px; } }
+
 /* ---------- first visit ---------- */
 .fv-grid{ display:grid; gap:44px; }
 .fv-photo{ border-radius:var(--r-lg); overflow:hidden; aspect-ratio:4/3.2; margin-top:34px; }
@@ -259,6 +283,8 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 .doc-photo img{ width:100%; height:100%; object-fit:cover; object-position:70% 25%; }
 .doc-role{ font-size:16px; color:var(--ink-3); margin-top:12px; }
 .doc-body{ margin-top:26px; display:grid; gap:16px; color:var(--ink-2); max-width:34em; }
+.doc-work{ margin-top:32px; }
+.doc-work img{ width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:var(--r-md); background:var(--grey-2); }
 .doc-quote{ margin:30px 0 0; font:600 clamp(22px, 2vw, 27px)/1.35 var(--f-d); letter-spacing:-.02em; color:var(--ink); max-width:24em; }
 .creds{ margin:34px 0 0; }
 .creds div{ display:grid; gap:2px; padding:14px 0; border-top:1px solid var(--line); }
@@ -287,6 +313,8 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 .rev{ padding:28px 0; border-bottom:1px solid var(--grey-3); }
 .rev blockquote{ margin:0; font-size:18px; line-height:1.55; color:var(--ink); }
 .rev .who{ margin-top:12px; font-size:14.5px; }
+.rev-ph img{ width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:var(--r-md); margin-bottom:20px; background:var(--grey-2); }
+.rev-ph img.climb{ object-position:50% 72%; }
 .rev-note{ margin-top:24px; font-size:14px; color:var(--ink-3); }
 @media (min-width:860px){ .rev-list{ grid-template-columns:1fr 1fr; } }
 @media (min-width:960px){ .rev-feature{ grid-template-columns:.9fr 1.1fr; gap:80px; } }
@@ -297,13 +325,16 @@ button,input,select,textarea{ font:inherit; color:inherit; }
 .offer h2{ font-size:clamp(32px, 3.8vw, 54px); font-weight:800; line-height:1; letter-spacing:-.045em; }
 .offer p{ margin-top:12px; font-size:17px; max-width:36em; }
 .offer .btn{ justify-self:start; }
-@media (min-width:900px){ .offer-in{ grid-template-columns:1fr auto; gap:60px; } }
+.offer-photo{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:50% 42%; border-radius:var(--r-md); }
+@media (min-width:900px){ .offer-in{ grid-template-columns:200px 1fr auto; gap:48px; } .offer-photo{ aspect-ratio:1/1; } }
 
 /* ---------- pricing ---------- */
 .price-grid{ display:grid; gap:44px; }
 .price-side .lead{ margin-top:20px; }
 .price-side ul{ margin-top:28px; }
 .price-side li{ padding:12px 0; border-top:1px solid var(--line); font-size:16.5px; display:flex; gap:12px; }
+.price-photo{ margin-top:32px; }
+.price-photo img{ width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:var(--r-md); background:var(--grey-2); }
 .price-side li .ic{ color:var(--ink); margin-top:4px; width:18px; height:18px; stroke-width:2.2; }
 .ptable{ width:100%; border-collapse:collapse; }
 .ptable caption{ text-align:left; font:600 14px/1.3 var(--f-b); color:var(--ink-3); padding-bottom:12px; }
@@ -493,7 +524,7 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
       </div>
     </div>
     <div class="hero-photo">
-      <img src="img/hero.webp" width="2200" height="1564" alt="Dr. Lena Hartwell working on a patient's hip mobility on the treatment table, next to a wall of bright windows" fetchpriority="high">
+      <img src="img/hero.webp" width="2200" height="1467" alt="A chiropractor adjusting a patient's mid back on a chiropractic table, with a spine model on the wall behind them" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -513,6 +544,10 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
       <li><span>Saturdays</span><span>8am to noon</span></li>
       <li><span>Contracts or prepaid packages</span><span>None</span></li>
     </ul>
+    <figure class="intro-photo rv">
+      <img src="img/denver.webp" width="1400" height="827" loading="lazy" alt="Downtown Denver's skyline at dusk, seen from across the river">
+      <figcaption class="cap">Downtown from the LoHi side of the river.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -522,28 +557,20 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
       <h2 class="h2 rv">What people come in for</h2>
       <p class="lead rv">Back pain often starts at the hips. Headaches often start in the neck. We test the whole chain before we treat anything, so you are not paying to chase symptoms.</p>
     </div>
-    <div class="cond-grid">
-      <figure class="rv">
-        <div class="cond-photo"><img src="img/neck.webp" width="1000" height="1500" loading="lazy" alt="Chiropractor gently supporting a patient's head during a neck assessment on the treatment table"></div>
-        <figcaption class="cap">Neck and upper back assessment, first visit.</figcaption>
-      </figure>
-      <div>
-        <div class="cond-list rv">
-          <div class="cond-item"><h3>Low back pain</h3><p>Stiff mornings, pain after sitting, the twinge when you load the car for the mountains. Our most common visit.</p></div>
-          <div class="cond-item"><h3>Neck pain and stiffness</h3><p>Screens, steering wheels and sleeping wrong. We work on the joints and the muscles that guard them.</p></div>
-          <div class="cond-item"><h3>Tension headaches</h3><p>Headaches that build from the neck and shoulders. We screen first and send you to a physician if something needs a medical look.</p></div>
-          <div class="cond-item"><h3>Sciatica and leg pain</h3><p>Pain that travels into the hip, leg or foot. We find where it starts before we decide how to treat it.</p></div>
-          <div class="cond-item"><h3>Running and riding injuries</h3><p>Hips, knees, IT band and low back trouble that shows up as the miles go up.</p></div>
-          <div class="cond-item"><h3>Ski and climbing strains</h3><p>Tweaked backs from a hard fall, sore shoulders from too many nights on the wall.</p></div>
-          <div class="cond-item"><h3>Pregnancy back pain</h3><p>Gentle care for the low back and pelvis, with pregnancy pillows and a drop table.</p></div>
-          <div class="cond-item"><h3>Auto accident injuries</h3><p>Whiplash and soreness after a crash, documented properly and billed to your auto insurer.</p></div>
-        </div>
-        <p class="cond-note rv">Chiropractic care focuses on muscles, joints and the spine. If your symptoms point somewhere else, we will tell you and help you find the right provider.</p>
-        <div class="cta-row rv">
-          <a class="btn btn-ink" href="#book">Book your first visit<svg class="ic ic-arrow"><use href="#i-arrow"/></svg></a>
-          <p>Not sure it&rsquo;s something we treat? Call <a class="link" href="tel:+13035550163">(303) 555-0163</a> and ask.</p>
-        </div>
-      </div>
+    <div class="cond-list rv">
+      <div class="cond-item"><img src="img/c-back.webp" width="480" height="480" loading="lazy" alt="Dr. Hartwell working on the low back of a patient lying on her side"><div><h3>Low back pain</h3><p>Stiff mornings, pain after sitting, the twinge when you load the car for the mountains. Our most common visit.</p></div></div>
+      <div class="cond-item"><img src="img/c-neck.webp" width="480" height="480" loading="lazy" alt="A chiropractor checking the neck of a patient sitting on the table"><div><h3>Neck pain and stiffness</h3><p>Screens, steering wheels and sleeping wrong. We work on the joints and the muscles that guard them.</p></div></div>
+      <div class="cond-item"><img src="img/c-head.webp" width="480" height="480" loading="lazy" alt="A patient with a headache resting on the treatment table with a hand on her forehead"><div><h3>Tension headaches</h3><p>Headaches that build from the neck and shoulders. We screen first and send you to a physician if something needs a medical look.</p></div></div>
+      <div class="cond-item"><img src="img/c-sciatica.webp" width="480" height="480" loading="lazy" alt="Dr. Hartwell lifting a patient's straight leg to test for sciatic nerve irritation"><div><h3>Sciatica and leg pain</h3><p>Pain that travels into the hip, leg or foot. We find where it starts before we decide how to treat it.</p></div></div>
+      <div class="cond-item"><img src="img/c-run.webp" width="480" height="480" loading="lazy" alt="A trail runner on a narrow path up a green mountainside"><div><h3>Running and riding injuries</h3><p>Hips, knees, IT band and low back trouble that shows up as the miles go up.</p></div></div>
+      <div class="cond-item"><img src="img/c-ski.webp" width="480" height="480" loading="lazy" alt="A skier standing on a snowy summit under a deep blue sky"><div><h3>Ski and climbing strains</h3><p>Tweaked backs from a hard fall, sore shoulders from too many nights on the wall.</p></div></div>
+      <div class="cond-item"><img src="img/c-preg.webp" width="480" height="480" loading="lazy" alt="A pregnant woman standing in a bright white room"><div><h3>Pregnancy back pain</h3><p>Gentle care for the low back and pelvis, with pregnancy pillows and a drop table.</p></div></div>
+      <div class="cond-item"><img src="img/c-auto.webp" width="480" height="480" loading="lazy" alt="A chiropractor using a handheld adjusting instrument on a patient's neck"><div><h3>Auto accident injuries</h3><p>Whiplash and soreness after a crash, documented properly and billed to your auto insurer.</p></div></div>
+    </div>
+    <p class="cond-note rv">Chiropractic care focuses on muscles, joints and the spine. If your symptoms point somewhere else, we will tell you and help you find the right provider.</p>
+    <div class="cta-row rv">
+      <a class="btn btn-ink" href="#book">Book your first visit<svg class="ic ic-arrow"><use href="#i-arrow"/></svg></a>
+      <p>Not sure it&rsquo;s something we treat? Call <a class="link" href="tel:+13035550163">(303) 555-0163</a> and ask.</p>
     </div>
   </div>
 </section>
@@ -621,6 +648,23 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
   </div>
 </section>
 
+<section class="sec bg-white" aria-labelledby="gal-h">
+  <div class="wrap">
+    <div class="gal-head">
+      <h2 id="gal-h" class="h2 rv">Inside the clinic</h2>
+      <p class="lead rv">Two treatment rooms, big windows and on-site X-ray.</p>
+    </div>
+    <div class="gal rv">
+      <figure class="g-a"><img src="img/clinic-room.webp" width="1400" height="933" loading="lazy" alt="Dr. Hartwell treating a patient on the table in the front room, under a wall of tall windows"></figure>
+      <figure class="g-b"><img src="img/clinic-shoulder.webp" width="1000" height="667" loading="lazy" alt="Dr. Hartwell checking a seated patient's shoulder movement by the window"></figure>
+      <figure class="g-c"><img src="img/neck.webp" width="1000" height="1500" loading="lazy" alt="Chiropractor gently supporting a patient's head during a neck assessment on the treatment table"></figure>
+      <figure class="g-d"><img src="img/clinic-stretch.webp" width="1000" height="667" loading="lazy" alt="Dr. Hartwell stretching a patient's hip and hamstring on the treatment table"></figure>
+      <figure class="g-e"><img src="img/clinic-taping.webp" width="1000" height="667" loading="lazy" alt="Dr. Hartwell applying blue kinesiology tape to a patient's low back"></figure>
+      <figure class="g-f"><img src="img/clinic-chair.webp" width="1000" height="667" loading="lazy" alt="A rattan chair and a pair of slippers in the corner of a treatment room"></figure>
+    </div>
+  </div>
+</section>
+
 <section class="sec bg-char on-dark" id="first-visit">
   <div class="wrap fv-grid">
     <div class="fv-intro">
@@ -658,6 +702,10 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
         <p>Lena grew up in Fort Collins, ran cross country at CU Boulder and trained as a chiropractor in Portland before coming home to open Riverline in 2014. She still runs the Platte River Trail most mornings before the clinic opens.</p>
         <p>She sees a lot of runners, climbers and skiers, plenty of people who sit at a desk all day, and a steady number of expecting moms. Her approach is simple: find the cause, treat it well, and teach you enough that you don&rsquo;t need her for long.</p>
       </div>
+      <figure class="doc-work rv">
+        <img src="img/clinic-table.webp" width="1000" height="667" loading="lazy" alt="Dr. Hartwell at the head of the table, working on a patient's upper back">
+        <figcaption class="cap">Upper back work at the start of a visit.</figcaption>
+      </figure>
       <blockquote class="doc-quote rv">&ldquo;Most people don&rsquo;t need forever care. They need a clear answer, good hands-on work and a plan to stay out of my office.&rdquo;</blockquote>
       <dl class="creds rv">
         <div><dt>Doctorate</dt><dd>Doctor of Chiropractic, University of Western States, Portland, 2011</dd></div>
@@ -686,8 +734,8 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
     <div class="rev-list">
       <div class="rev rv"><blockquote>Desk job in RiNo, neck ache by 3pm every day. They raised my monitor before they ever adjusted me. That earned my trust.</blockquote><p class="who"><b>Daniel O.</b> · Highland</p></div>
       <div class="rev rv"><blockquote>Thorough exam, and nobody tried to sell me 40 visits. I got a plan for five and a sheet of exercises I still use.</blockquote><p class="who"><b>Carla W.</b> · Wheat Ridge</p></div>
-      <div class="rev rv"><blockquote>Tweaked my low back on the first big powder day of the season. Two weeks later I was skiing again, and I actually do the warm-up now.</blockquote><p class="who"><b>Sam K.</b> · Sunnyside</p></div>
-      <div class="rev rv"><blockquote>I climb three nights a week and my shoulder was done. Lena found the real problem in my upper back. Nobody had looked there.</blockquote><p class="who"><b>Ana R.</b> · Wash Park</p></div>
+      <div class="rev rev-ph rv"><img src="img/rev-ski.webp" width="1000" height="563" loading="lazy" alt="A skier dropping into deep powder on a bright day"><blockquote>Tweaked my low back on the first big powder day of the season. Two weeks later I was skiing again, and I actually do the warm-up now.</blockquote><p class="who"><b>Sam K.</b> · Sunnyside</p></div>
+      <div class="rev rev-ph rv"><img class="climb" src="img/rev-climb.webp" width="1000" height="1000" loading="lazy" alt="A climber studying a route on an indoor bouldering wall"><blockquote>I climb three nights a week and my shoulder was done. Lena found the real problem in my upper back. Nobody had looked there.</blockquote><p class="who"><b>Ana R.</b> · Wash Park</p></div>
       <div class="rev rv"><blockquote>Kayla sorted out my insurance before I showed up, so I knew my copay before I walked in. Small thing, but it made a difference.</blockquote><p class="who"><b>Tom H.</b> · Arvada</p></div>
       <div class="rev rv"><blockquote>Seven months pregnant and sleeping had become a project. Gentle, careful, and they have the pillows that make lying face down possible.</blockquote><p class="who"><b>Priya S.</b> · Berkeley</p></div>
     </div>
@@ -697,6 +745,7 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
 
 <section class="offer" aria-label="New patient offer">
   <div class="wrap offer-in rv">
+    <img class="offer-photo" src="img/offer.webp" width="900" height="1350" loading="lazy" alt="Dr. Hartwell and a patient laughing together on the treatment table">
     <div>
       <h2>New patient visit, $69</h2>
       <p>Consultation, full exam, X-rays if needed and your first adjustment. Usually $195. Most new patients are seen within two days.</p>
@@ -717,6 +766,10 @@ details[open] .pm::after{ transform:translate(-50%,-50%) rotate(0); }
         <li><svg class="ic"><use href="#i-check"/></svg>Auto accident care billed to your auto insurer, including MedPay</li>
         <li><svg class="ic"><use href="#i-check"/></svg>No referral needed to book</li>
       </ul>
+      <figure class="price-photo rv">
+        <img src="img/plan.webp" width="1300" height="1078" loading="lazy" alt="A chiropractor using a spine model to explain a care plan to a patient">
+        <figcaption class="cap">Your plan and its price, explained before we start.</figcaption>
+      </figure>
     </div>
     <div class="rv">
       <table class="ptable">
