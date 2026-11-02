@@ -13,7 +13,7 @@ All 33 photos are from Pexels and used under the Pexels licence (free for commer
 | c-run.webp | 30932860 | https://www.pexels.com/photo/trail-runner-in-green-mountain-landscape-30932860/ | Not confirmed | Conditions: Running and riding injuries (square crop) |
 | c-ski.webp | 3647134 | https://www.pexels.com/photo/man-skiing-on-snow-covered-ground-3647134/ | Not confirmed | Conditions: Ski and climbing strains (square crop) |
 | c-preg.webp | 9214911 | https://www.pexels.com/photo/a-maternity-shoot-of-a-pregnant-woman-in-white-tank-top-9214911/ | Not confirmed | Conditions: Pregnancy back pain (square crop) |
-| c-auto.webp | 14797752 | https://www.pexels.com/photo/14797752/ | Not confirmed | Conditions: Auto accident injuries (square crop; wall chart blurred) |
+| c-auto.webp | 14797759 | https://www.pexels.com/photo/14797759/ | Not confirmed (same session as the hero) | Conditions: Auto accident injuries (square crop) |
 | room.webp | 5793904 | https://www.pexels.com/photo/a-woman-lying-on-the-therapy-bed-5793904/ | Yan Krukau | Booking section, clinic photo |
 | neck.webp | 5794013 | https://www.pexels.com/photo/5794013/ | Yan Krukau | Gallery "Inside the clinic", tall photo |
 | clinic-room.webp | 5793991 | https://www.pexels.com/photo/5793991/ | Yan Krukau | Gallery, large photo |
@@ -26,8 +26,8 @@ All 33 photos are from Pexels and used under the Pexels licence (free for commer
 | rehab.webp | 5794009 | https://www.pexels.com/photo/5794009/ | Yan Krukau | How we work: Rehab |
 | tape.webp | 5794032 | https://www.pexels.com/photo/5794032/ | Yan Krukau | "Also in the clinic" (cropped square) |
 | posture.webp | 5793950 | https://www.pexels.com/photo/5793950/ | Yan Krukau | First visit section |
-| doctor.webp | 5793914 | https://www.pexels.com/photo/5793914/ | Yan Krukau | Dr. Hartwell portrait (cropped) |
-| clinic-table.webp | 5794033 | https://www.pexels.com/photo/a-woman-in-white-shirt-lying-face-down-on-the-bed-5794033/ | Yan Krukau | Dr. Hartwell section, "Upper back work" |
+| founder.webp | 14797752 | https://www.pexels.com/photo/14797752/ | Not confirmed (same session as the hero) | Dr. Dhillon portrait, founder section (cropped; wall certificate edge blurred) |
+| founder-work.webp | 14797753 | https://www.pexels.com/photo/14797753/ | Not confirmed (same session as the hero) | Founder section, rehab with a resistance band |
 | mountain.webp | 7893099 | https://www.pexels.com/photo/7893099/ | Not confirmed | Full-bleed band "Start with what you want back" |
 | lake.webp | 14989443 | https://www.pexels.com/photo/man-walking-at-a-river-in-mountains-14989443/ | Not confirmed | Goals: "Longer days on the trail" |
 | trail.webp | 7893122 | https://www.pexels.com/photo/7893122/ | Not confirmed | Goals: "Carrying the pack again" |
@@ -44,4 +44,4 @@ Notes
 - The four mountain-hiking photos (7893093, 7893095, 7893099, 7893122) come from one outdoor session on Pexels. The CDN files for them and for the other outdoor photos carry no usable EXIF credit, and the Pexels site blocks scripted page fetches, so those photographer names are left blank too. Open each page URL to read the name.
 - In the skyline photo (16108565) the tower logo was replaced with a patch of the same glass facade, and the smaller building signs were inpainted, so no company name is readable.
 - Bare-ID page URLs (`/photo/<ID>/`) redirect to the full slug on Pexels.
-- Everyone pictured is a stock model. The names used on the site (Dr. Lena Hartwell, staff, patients) are fictional.
+- Everyone pictured is a stock model. The names used on the site (Dr. Arjan Dhillon, Dr. Lena Hartwell, staff, patients) are fictional.
