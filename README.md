@@ -6,7 +6,7 @@ single self-contained `index.html` with its photos in `img/`, served by GitHub P
 | Folder | Business | City |
 |---|---|---|
 | `tree-service/` | Post Oak Tree Co. | Atlanta, GA |
-| `med-spa/` | (in progress) | Miami, FL |
+| `med-spa/` | Maison Vale Aesthetics | Miami (Coral Gables), FL |
 | `law-firm/` | Calder & Thorne Injury Law | Houston, TX |
 | `chiropractor/` | Riverline Chiropractic | Denver, CO |
 | `dentist/` | Larkspur Dental Studio | Nashville, TN |
