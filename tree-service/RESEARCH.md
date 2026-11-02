@@ -12,7 +12,7 @@
 
 **Forms.** Four or five fields, a photo upload, and a line saying what happens next. Decision: name, phone, neighborhood, service, an optional note, a styled photo drop zone and call or text preference. The success message lists the next three steps.
 
-**Photography.** Real crews in PPE, climbers on rope, before and after shots, big healthy trees. Decision: 17 Pexels photos with one shared earthy grade. The climber is the hero. Every section uses a real photo, with no drawn maps or illustrations.
+**Photography.** Real crews in PPE, climbers on rope, before and after shots, big healthy trees. Decision: 28 Pexels photos with one shared earthy grade. The hero is a climber roped into a big tree with a saw, lowering cut limbs, so the trade reads before any text does. Every section except the form has a real photo, plus a six-photo "On the job" strip, with no drawn maps or illustrations.
 
 **Atlanta market.** Atlanta calls itself the "city in a forest" and has one of the densest urban canopies of any big US city. The common trees are water and white oaks, tulip poplars and loblolly pines. Summer thunderstorms bring down big trees often, and Tropical Storm Irma did serious tree damage across the metro in 2017. I used the intown neighborhoods (Virginia-Highland, Druid Hills, Ansley Park, Inman Park) and the northern suburbs (Brookhaven, Sandy Springs, Dunwoody, Roswell, Marietta), and put the yard in Chamblee.
 
